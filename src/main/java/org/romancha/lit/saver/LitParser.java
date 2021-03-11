@@ -27,11 +27,13 @@ public class LitParser {
 
     public void generateHtml() throws InterruptedException {
         StringBuilder result = new StringBuilder();
-
+        open(bookUrl);
+        TimeUnit.SECONDS.sleep(3);
+        CookieHandler.openCookie(WebDriverRunner.getWebDriver().manage());
         open(bookUrl);
 
         TimeUnit.SECONDS.sleep(waitBeforeStart);
-
+        CookieHandler.saveCookie(WebDriverRunner.getWebDriver().manage());
         while (true) {
             try {
                 String cleanedPart = LitBook.getCleanedDocumentContent();
